@@ -14,8 +14,8 @@ COPY nginx.conf /etc/nginx/nginx.conf
 
 # Health check (use 127.0.0.1 to avoid IPv6 issues)
 HEALTHCHECK --interval=30s --timeout=3s --start-period=10s --retries=3 \
-  CMD wget --no-verbose --tries=1 --spider http://127.0.0.1/health || exit 1
+  CMD wget --no-verbose --tries=1 --spider http://127.0.0.1:3000/health || exit 1
 
-EXPOSE 80
+EXPOSE 3000
 
 CMD ["nginx", "-g", "daemon off;"]
